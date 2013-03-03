@@ -24,7 +24,7 @@ multi-modal, especially when the modes are separated by large regions of small o
 vanishing density; this is generic in many data-analysis problems of interest
 to scientists.  Here we propose a sampler that solves this problem by recursively
 splitting the parameter space until each sub-space contains at most one mode, or at
-least some easy-to-sample distribution.  The modes are founded by initializing
+least some easy-to-sample distribution.  The modes are discovered by initializing
 standard samplers at prior samplings; we use the housekeeping data from an ensemble
 sampler to provide mode (or cluster) label information. Each parameter sub-space 
 split is performed by a support vector machine.  The (now easy-to-make)
