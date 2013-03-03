@@ -12,7 +12,7 @@ Authors
 License
 -------
 
-This is **an academic project which includes software that doesn't even work**.
+This is **an academic project; the software doesn't even work**.
 Use at your own risk.
 Copyright 2013 the Authors.
 
