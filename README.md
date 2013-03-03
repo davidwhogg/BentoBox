@@ -1,5 +1,5 @@
-KitchenSink
-===========
+Bento Box MCMC
+==============
 
 Authors
 -------
