@@ -36,23 +36,23 @@ Briefly, the algorithm is:
   be greater than something like twice the number $\ndim$ of
   dimensions of the space $\parspace$, if an ensemble sampler like
   \emcee\ is going to be used.
-\item \textbf{run MCMC burn-in:} Initialize $\nwalker$ MCMC ``walkers''
-  at the $\nwalker$ prior-sample points and run MCMC for $\nburn$
-  iterations.  If this is performed with something like \emcee, this
-  is done in one step.  If this is performed with something like
-  Metropolis--Hastings, this is done in $\nwalker$ independent (though
-  conceivably parallel) processes.
+\item \textbf{run MCMC burn-in:} Initialize $\nwalker$ MCMC
+  ``walkers'' at the $\nwalker$ prior-sample points and run MCMC for
+  $\nburn$ iterations.  If this is performed with something like
+  \emcee, this is done all in parallel in one operation.  If this is
+  performed with something like Metropolis--Hastings, this is done in
+  $\nwalker$ independent (though conceivably parallel) processes.
 \item \textbf{compute mean walker properties:} At the end of the
   $\nburn$ iterations, compute the mean (over, say, the second half of
   each walker's chain) position $\mean{\pars_k}$ of every walker $k$.
   You could augment these $\ndim$-dimensional mean positions with
   acceptance ratios or mean likelihoods or anything else of interest.
-\item \textbf{perform clustering hypothesis test:} Perform a
-  clustering hypothesis test that indicates whether the mean position
-  distribution is better described by one cluster or two.  This could
-  be based on some kind of linear or Fisher discriminant analysis or
-  perhaps comparison of mixtures of Gaussians with one and two
-  Gaussians, using an information criterion based on how much the
+\item \label{step:test}\textbf{perform clustering hypothesis test:}
+  Perform a clustering hypothesis test that indicates whether the mean
+  position distribution is better described by one cluster or two.
+  This could be based on some kind of linear or Fisher discriminant
+  analysis or perhaps comparison of mixtures of Gaussians with one and
+  two Gaussians, using an information criterion based on how much the
   second Gaussian reduces the determinant of the total variance
   tensor.  The hypothesis test can be tuned to be conservative or
   aggressive; here we want to split the walkers only on good evidence.
@@ -73,7 +73,8 @@ Briefly, the algorithm is:
   $\parspace\leftarrow\parspace_A$, and the other of which works on
   subspace $\parspace\leftarrow\parspace_B$.
 \item \textbf{fail---compute the subspace marginalized likelihood:} If
-  the test fails, compute the marginalized likelihood in the subspace
+  the test of step~\ref{step:test} fails, compute the marginalized
+  likelihood in the subspace
   \begin{eqnarray}
     p(\data\given\parspace)
     &\equiv&
