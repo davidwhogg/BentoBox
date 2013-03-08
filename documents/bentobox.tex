@@ -43,10 +43,11 @@ Briefly, the algorithm is:
   performed with something like Metropolis--Hastings, this is done in
   $\nwalker$ independent (though conceivably parallel) processes.
 \item \textbf{compute mean walker properties:} At the end of the
-  $\nburn$ iterations, compute the mean (over, say, the second half of
-  each walker's chain) position $\mean{\pars_k}$ of every walker $k$.
-  You could augment these $\ndim$-dimensional mean positions with
-  acceptance ratios or mean likelihoods or anything else of interest.
+  $\nburn$ iterations, compute the mean position $\mean{\pars_k}$ of
+  every walker $k$ (over, say, the second half of each walker's
+  chain).  You could augment these $\ndim$-dimensional mean positions
+  with acceptance ratios or mean likelihoods or anything else of
+  interest.
 \item \label{step:test}\textbf{perform clustering hypothesis test:}
   Perform a clustering hypothesis test that indicates whether the mean
   position distribution is better described by one cluster or two.
